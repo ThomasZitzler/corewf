@@ -7,7 +7,7 @@ namespace System.Activities.Statements
     using System.Collections.ObjectModel;
     using System.Activities.Runtime.Collections;
     using System.Runtime.Serialization;
-    using System.Windows.Markup;
+    using Portable.Xaml.Markup;
     using System.Activities.Internals;
     using System.Activities.Runtime;
 

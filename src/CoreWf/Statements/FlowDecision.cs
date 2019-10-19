@@ -9,7 +9,7 @@ namespace System.Activities.Statements
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Linq.Expressions;
-    using System.Windows.Markup;
+    using Portable.Xaml.Markup;
     using System.Activities.Internals;
 
     public sealed class FlowDecision : FlowNode

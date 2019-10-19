@@ -8,7 +8,7 @@ namespace System.Activities.Statements
     using System.Activities.Validation;
     using System.ComponentModel;
     using System.Transactions;
-    using System.Windows.Markup;
+    using Portable.Xaml.Markup;
     using System.Activities.Expressions;
     using System.Collections.ObjectModel;
     using System.Activities.Runtime;

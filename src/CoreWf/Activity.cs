@@ -13,7 +13,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
 using System.Threading;
-using System.Windows.Markup;
+using Portable.Xaml.Markup;
 using System.Activities.Internals;
 
 #if NET45

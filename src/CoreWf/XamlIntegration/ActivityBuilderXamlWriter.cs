@@ -5,8 +5,8 @@ namespace System.Activities.XamlIntegration
 {
     using System.Collections.Generic;
     using System.Globalization;
-    using System.Xaml;
-    using System.Xaml.Schema;
+    using Portable.Xaml;
+    using Portable.Xaml.Schema;
     using System;
     using System.Activities.Runtime;
     using System.Activities.Internals;

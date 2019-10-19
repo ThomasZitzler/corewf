@@ -4,7 +4,7 @@
 namespace System.Activities.Expressions
 {
     using System.Activities.Runtime;
-    using System.Windows.Markup;
+    using Portable.Xaml.Markup;
 
     [ContentProperty("DelegateArgument")]
     public sealed class DelegateArgumentValue<T> : EnvironmentLocationValue<T>

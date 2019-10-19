@@ -8,9 +8,10 @@ namespace System.Activities.Debugger
     using System.IO;
     using System.Reflection;
     using System.Runtime;
-    using System.Xaml;
-    using System.Xaml.Schema;
+    using Portable.Xaml;
+    using Portable.Xaml.Schema;
     using System.ComponentModel;
+    using Portable.Xaml.Markup;
     using System.Activities.XamlIntegration;
     using System;
     using System.Activities.Runtime;

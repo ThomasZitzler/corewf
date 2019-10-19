@@ -5,7 +5,7 @@ namespace System.Activities.Statements
 {
     using System.Activities;
     using System.ComponentModel;
-    using System.Windows.Markup;
+    using Portable.Xaml.Markup;
 
     /// <summary>
     /// This class represents a Transition of a State.

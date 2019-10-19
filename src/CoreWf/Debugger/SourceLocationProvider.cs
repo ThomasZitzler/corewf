@@ -6,13 +6,14 @@ namespace System.Activities.Debugger
     using System;
     using System.Activities.Hosting;
     using System.Activities.XamlIntegration;
+    using System.Diagnostics;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Activities.Runtime;
     using System.Reflection;
     using System.Security;
     using System.Security.Permissions;
-    using System.Xaml;
+    using Portable.Xaml;
     using System.Xml;
     using System.IO;
     using System.Activities.Validation;
@@ -20,7 +21,6 @@ namespace System.Activities.Debugger
     using System.Runtime.Serialization;
     using System.Activities.Debugger.Symbol;
     using System.Globalization;
-    using Trace = System.Diagnostics.Trace;
 
     // Provide SourceLocation information for activities in given root activity.
     // This is integration point with Workflow project system (TBD).
@@ -31,7 +31,7 @@ namespace System.Activities.Debugger
     //  3.  Publish (serialize to tmp file) and deserialize it to collect SourceLocation (for loose xaml).
     // Current code cover only step 3.
 
-    [Diagnostics.DebuggerNonUserCode]
+    [DebuggerNonUserCode]
     public static class SourceLocationProvider
     {
         [Fx.Tag.Throws(typeof(Exception), "Calls Serialize/Deserialize to temporary file")]

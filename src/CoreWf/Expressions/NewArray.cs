@@ -7,7 +7,7 @@ namespace System.Activities.Expressions
     using System.Collections.ObjectModel;
     using System.Reflection;
     using System.Activities.Runtime.Collections;
-    using System.Windows.Markup;
+    using Portable.Xaml.Markup;
     using System;
     using System.Activities.Internals;
 

@@ -9,7 +9,7 @@ namespace System.Activities.XamlIntegration
     using System.ComponentModel;
     using System.Globalization;
     using System.Reflection;
-    using System.Xaml;
+    using Portable.Xaml;
 
     public class AssemblyReferenceConverter : TypeConverter
     {

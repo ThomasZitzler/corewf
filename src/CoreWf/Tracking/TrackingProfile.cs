@@ -5,7 +5,7 @@ namespace System.Activities.Tracking
 {
     using System.Collections.ObjectModel;
     using System.ComponentModel;
-    using System.Windows.Markup;
+    using Portable.Xaml.Markup;
 
     [ContentProperty("Queries")]
     public class TrackingProfile

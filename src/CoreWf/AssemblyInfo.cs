@@ -2,7 +2,7 @@
 // See LICENSE file in the project root for full license information.
 using System;
 using System.Runtime.InteropServices;
-using System.Windows.Markup;
+using Portable.Xaml.Markup;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information

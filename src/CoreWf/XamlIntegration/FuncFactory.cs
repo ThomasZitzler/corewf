@@ -6,7 +6,8 @@ namespace System.Activities.XamlIntegration
     using System;
     using System.Collections.Generic;
     using System.Reflection;
-    using System.Xaml;
+    using Portable.Xaml.Markup;
+    using Portable.Xaml;
 
     internal abstract class FuncFactory
     {
@@ -45,8 +46,8 @@ namespace System.Activities.XamlIntegration
 
         internal static FuncFactory CreateFactory(XamlReader xamlReader, IServiceProvider context)
         {
-            var objectWriterFactory = context.GetService(typeof(IXamlObjectWriterFactory)) as IXamlObjectWriterFactory;
-            var provideValueService = context.GetService(typeof(Windows.Markup.IProvideValueTarget)) as Windows.Markup.IProvideValueTarget;
+            IXamlObjectWriterFactory objectWriterFactory = context.GetService(typeof(IXamlObjectWriterFactory)) as IXamlObjectWriterFactory;
+            IProvideValueTarget provideValueService = context.GetService(typeof(IProvideValueTarget)) as IProvideValueTarget;
 
             Type propertyType = null;
             //

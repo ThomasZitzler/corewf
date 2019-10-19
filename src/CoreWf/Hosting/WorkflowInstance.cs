@@ -9,6 +9,7 @@ namespace System.Activities.Hosting
     using System.Activities.Validation;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Diagnostics;
     using System.Threading;
     using System.Activities.Runtime.DurableInstancing;
     using System.Activities.Internals;
@@ -39,7 +40,7 @@ namespace System.Activities.Hosting
         private Exception abortedException;
 
 #if DEBUG
-        private readonly Diagnostics.StackTrace abortStack;
+        private readonly StackTrace abortStack;
 #endif
 
         protected WorkflowInstance(Activity workflowDefinition)

@@ -3,7 +3,7 @@
 
 namespace System.Activities.XamlIntegration
 {
-    using System.Xaml;
+    using Portable.Xaml;
     using System.Activities.Runtime;
 
     internal static class XamlWriterExtensions

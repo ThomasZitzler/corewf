@@ -7,7 +7,7 @@ namespace System.Activities.Statements
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Activities.Runtime.Collections;
-    using System.Windows.Markup;
+    using Portable.Xaml.Markup;
     using System.Activities.Runtime;
 
     [ContentProperty("Cases")]

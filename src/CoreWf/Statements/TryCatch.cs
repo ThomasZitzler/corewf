@@ -11,7 +11,7 @@ namespace System.Activities.Statements
     using System.ComponentModel;
     using System.Activities.Runtime.Collections;
     using System.Runtime.Serialization;
-    using System.Windows.Markup;
+    using Portable.Xaml.Markup;
     using System.Activities.Internals;
 
 #if NET45

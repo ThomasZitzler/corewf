@@ -4,7 +4,7 @@
 namespace System.Activities.XamlIntegration
 {
     using System.Collections.Generic;
-    using System.Xaml;
+    using Portable.Xaml;
 
     internal class NamespaceTable : IXamlNamespaceResolver
     {

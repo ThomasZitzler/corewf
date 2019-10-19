@@ -10,7 +10,7 @@ namespace System.Activities
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Runtime.Serialization;
-    using System.Windows.Markup;
+    using Portable.Xaml.Markup;
     using System.Activities.Internals;
 
     public abstract class Argument

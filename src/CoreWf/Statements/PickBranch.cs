@@ -7,7 +7,7 @@ namespace System.Activities.Statements
     using System.ComponentModel;
     using System.Activities.Internals;
     using System.Activities.Runtime.Collections;
-    using System.Windows.Markup;
+    using Portable.Xaml.Markup;
 
     [ContentProperty("Action")]
     public sealed class PickBranch

@@ -5,7 +5,7 @@ namespace System.Activities.Validation
 {
     using System;
     using System.Collections.Generic;
-    using System.Windows.Markup;
+    using Portable.Xaml.Markup;
     using System.Collections.ObjectModel;
     using System.Activities.Internals;
 

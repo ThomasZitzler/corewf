@@ -4,7 +4,7 @@
 namespace System.Activities.Debugger
 {
     using System.Text;
-    using System.Xaml;
+    using Portable.Xaml;
 
     internal class XamlNode
     {

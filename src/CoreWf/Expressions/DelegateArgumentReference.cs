@@ -3,7 +3,7 @@
 
 namespace System.Activities.Expressions
 {
-    using System.Windows.Markup;
+    using Portable.Xaml.Markup;
 
     [ContentProperty("DelegateArgument")]
     public sealed class DelegateArgumentReference<T> : EnvironmentLocationReference<T>

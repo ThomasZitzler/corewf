@@ -6,7 +6,7 @@ namespace System.Activities
     using System.Activities.Validation;
     using System.Collections.Generic;
     using System.ComponentModel;
-    using System.Windows.Markup;
+    using Portable.Xaml.Markup;
     using System.Collections.ObjectModel;
     using System;
     using System.Activities.Runtime;

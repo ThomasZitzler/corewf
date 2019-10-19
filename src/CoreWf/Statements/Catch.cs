@@ -6,7 +6,7 @@ namespace System.Activities.Statements
     using System;
     using System.Activities;
     using System.ComponentModel;
-    using System.Windows.Markup;
+    using Portable.Xaml.Markup;
 
     //[SuppressMessage(FxCop.Category.Naming, FxCop.Rule.IdentifiersShouldNotMatchKeywords, Justification = "Optimizing for XAML naming. VB imperative users will [] qualify (e.g. New [Catch](Of Exception))")]
     public abstract class Catch

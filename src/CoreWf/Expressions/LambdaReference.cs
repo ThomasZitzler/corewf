@@ -7,7 +7,7 @@ namespace System.Activities.Expressions
     using System.Activities.XamlIntegration;
     using System.Diagnostics;
     using System.Linq.Expressions;
-    using System.Windows.Markup;
+    using Portable.Xaml.Markup;
     using System.Activities.Runtime;
     using System.Activities.Internals;
 

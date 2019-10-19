@@ -46,7 +46,7 @@ namespace Microsoft.VisualBasic.Activities
                 typeof(int).Assembly, // mscorlib
                 typeof(CodeTypeDeclaration).Assembly, // System
                 typeof(Expression).Assembly,             // System.Core
-                Assembly.Load("Microsoft.VisualBasic"),
+                typeof(Microsoft.VisualBasic.Strings).Assembly,  // Microsoft.VisualBasic
                 typeof(Activity).Assembly  // System.Activities
             };
 

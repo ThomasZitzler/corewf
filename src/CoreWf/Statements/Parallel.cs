@@ -6,7 +6,7 @@ namespace System.Activities.Statements
     using System.Activities;
     using System.Collections.ObjectModel;
     using System.ComponentModel;
-    using System.Windows.Markup;
+    using Portable.Xaml.Markup;
     using System.Activities.Runtime.Collections;
     using System.Activities.Internals;
 

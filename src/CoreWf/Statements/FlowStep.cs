@@ -6,7 +6,7 @@ namespace System.Activities.Statements
     using System.Collections.Generic;
     using System.Activities;
     using System.ComponentModel;
-    using System.Windows.Markup;
+    using Portable.Xaml.Markup;
 
     [ContentProperty("Action")]
     public sealed class FlowStep : FlowNode

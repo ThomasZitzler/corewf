@@ -5,7 +5,7 @@ namespace System.Activities.Statements
 {
     using System.Activities;
     using System.Collections.ObjectModel;
-    using System.Windows.Markup;
+    using Portable.Xaml.Markup;
     using System.Activities.Runtime;
     using System.Activities.Internals;
 

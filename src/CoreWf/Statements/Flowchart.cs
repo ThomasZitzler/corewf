@@ -9,7 +9,7 @@ namespace System.Activities.Statements
     using System.ComponentModel;
     using System.Linq;
     using System.Activities.Runtime.Collections;
-    using System.Windows.Markup;
+    using Portable.Xaml.Markup;
     using System.Activities.Internals;
     using System.Activities.Runtime;
     using System;

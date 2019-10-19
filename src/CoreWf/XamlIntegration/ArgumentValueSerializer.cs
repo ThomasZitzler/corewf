@@ -4,7 +4,7 @@
 namespace System.Activities.XamlIntegration
 {
     using System.Activities.Internals;
-    using System.Windows.Markup;
+    using Portable.Xaml.Markup;
 
     public class ArgumentValueSerializer : ValueSerializer
     {        

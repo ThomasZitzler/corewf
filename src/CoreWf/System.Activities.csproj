@@ -5,44 +5,36 @@
     <Description>Unofficial port of the Windows Workflow Foundation (WF) to the .NET Standard</Description>
     <Authors>Dustin Metzgar,Jim Carley</Authors>
     <Copyright>Copyright © Dustin Metzgar 2018</Copyright>
+    <PackageId>TixCoreWf</PackageId>
     <PackageTags>.NET Core workflow</PackageTags>
-    <PackageProjectUrl>https://github.com/UiPath/CoreWf</PackageProjectUrl>
-    <PackageIconUrl>https://github.com/UiPath/corewf/blob/master/CoreWf.svg</PackageIconUrl>
-    <PackageLicenseUrl>https://github.com/UiPath/corewf/blob/master/LICENSE</PackageLicenseUrl>
-    <Version>1.2.1</Version>
-    <FileUpgradeFlags>40</FileUpgradeFlags>
-    <OldToolsVersion>15.0</OldToolsVersion>
+    <PackageProjectUrl>https://github.com/ThomasZitzler/CoreWf</PackageProjectUrl>
+    <PackageIconUrl>https://github.com/ThomasZitzler/corewf/blob/master/CoreWf.svg</PackageIconUrl>
+    <PackageLicenseUrl>https://github.com/ThomasZitzler/corewf/blob/master/LICENSE</PackageLicenseUrl>
+    <Version>1.2.2-pre20191021</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
     <RootNamespace>System.Activities</RootNamespace>
     <AssemblyName>System.Activities</AssemblyName>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/UiPath/corewf</RepositoryUrl>
+    <RepositoryUrl>https://github.com/ThomasZitzler/corewf</RepositoryUrl>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <LangVersion>7.1</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <LangVersion>7.1</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(OfficialBuild)'=='true'">
-    <SignAssembly>True</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\..\CoreWF.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.6.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.CodeAnalysis.VisualBasic.Scripting" Version="2.8.0-dev-62823-01" />
     <PackageReference Include="Microsoft.Extensions.Localization" Version="2.1.1" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.4.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Scripting.Common" Version="3.4.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.VisualBasic" Version="3.4.0" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-18618-05">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualBasic" Version="10.3.0" />
     <PackageReference Include="Portable.Xaml" Version="0.24.0" />
     <PackageReference Include="ReflectionMagic" Version="4.0.0" />
     <PackageReference Include="System.CodeDom" Version="4.5.0" />

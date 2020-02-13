@@ -1,19 +1,53 @@
 ﻿using Microsoft.CodeAnalysis;
+/*
 using Microsoft.CodeAnalysis.Scripting;
 using Microsoft.CodeAnalysis.Scripting.Hosting;
 using Microsoft.CodeAnalysis.VisualBasic;
 using Microsoft.CodeAnalysis.VisualBasic.Scripting;
 using Microsoft.CodeAnalysis.VisualBasic.Syntax;
+*/
 using ReflectionMagic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
+using System.Reflection.Metadata;
+using Microsoft.CodeAnalysis.Text;
 
 namespace Microsoft.VisualBasic.Activities
 {
     internal class HostedCompiler
     {
+        public LambdaExpression CompileExpression(string expressionString, Func<string, Type> getVariableType,
+            IEnumerable<Assembly> assemblies, IEnumerable<string> namespaces, Type lambdaReturnType = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        /*
+        public LambdaExpression CompileExpression(string expressionString, Func<string, Type> getVariableType,
+            IEnumerable<Assembly> assemblies, IEnumerable<string> namespaces, Type lambdaReturnType = null)
+        {
+            var ns = namespaces.Where(n => !string.IsNullOrEmpty(n));
+
+            var workspace = new AdhocWorkspace();
+
+            string projectName = "HelloWorldProject";
+            var projectId = ProjectId.CreateNewId();
+            var versionStamp = VersionStamp.Create();
+            var projectInfo = ProjectInfo.Create(projectId, versionStamp, projectName, projectName, LanguageNames.VisualBasic);
+            var newProject = workspace
+                .AddProject(projectInfo)
+                .WithMetadataReferences(assemblies.Select(x => MetadataReference.CreateFromFile(x.Location)));
+
+
+            var newDocument = workspace.AddDocument(newProject.Id, "Program.vb", SourceText.From($"? {expressionString}"));
+            throw new NotImplementedException();
+        }
+        */
+
+        /*
         public LambdaExpression CompileExpression(string expressionString, Func<string, Type> getVariableType, ScriptOptions options, Type lambdaReturnType = null)
         {
             var untypedExpressionScript = VisualBasicScript.Create($"? {expressionString}", options);
@@ -30,7 +64,7 @@ namespace Microsoft.VisualBasic.Activities
                 .Select(var => var.Type)
                 .Concat(new[] { lambdaReturnType ?? typeof(object) })
                 .Select(type => GetTypeName(type)));
-            var typedExpressionScript = 
+            var typedExpressionScript =
                 VisualBasicScript
                 .Create($"Dim resultExpression As Expression(Of Func(Of {types})) = Function({names}) ({expressionString})", options)
                 .ContinueWith("? resultExpression", options);
@@ -79,12 +113,13 @@ namespace Microsoft.VisualBasic.Activities
 
             var args = new object[]
             {
-                0, /* arrayBoundRadix */
-                true /* showNamespaces */
+                0, // arrayBoundRadix
+                true // showNamespaces
             };
 
             TypeOptions = Activator.CreateInstance(type, args);
         }
+    */
 
         internal void Dispose()
         {

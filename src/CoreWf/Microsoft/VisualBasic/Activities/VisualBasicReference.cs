@@ -18,13 +18,14 @@ namespace Microsoft.VisualBasic.Activities
     using System.Activities.Internals;
 
     [DebuggerStepThrough]
+    [ContentProperty("ExpressionText")]
     public sealed class VisualBasicReference<TResult> : CodeActivity<Location<TResult>>, IValueSerializableExpression, IExpressionContainer, ITextExpression
     {
         Expression<Func<ActivityContext, TResult>> expressionTree;
         LocationFactory<TResult> locationFactory;
         CompiledExpressionInvoker invoker;
 
-        public VisualBasicReference() 
+        public VisualBasicReference()
             : base()
         {
             this.UseOldFastPath = true;
@@ -55,12 +56,13 @@ namespace Microsoft.VisualBasic.Activities
         {
             get
             {
-                return false;
+                return true; /* TODO false */
             }
         }
 
         protected override Location<TResult> Execute(CodeActivityContext context)
         {
+            /*
             if (!this.invoker.IsStaticallyCompiled)
             {
                 if (this.expressionTree != null)
@@ -78,6 +80,7 @@ namespace Microsoft.VisualBasic.Activities
                 }
             }
             else
+            */
             {
                 return (Location<TResult>) this.invoker.InvokeExpression(context);
             }
@@ -87,11 +90,13 @@ namespace Microsoft.VisualBasic.Activities
         {
             this.expressionTree = null;
             this.invoker = new CompiledExpressionInvoker(this, true, metadata);
+
+            /*
             if (this.invoker.IsStaticallyCompiled)
             {
                 return;
             }
-            
+
             string validationError;
 
             // If ICER is not implemented that means we haven't been compiled
@@ -101,12 +106,13 @@ namespace Microsoft.VisualBasic.Activities
             if (validationError != null)
             {
                 metadata.AddValidationError(validationError);
-            }            
+            }
+            */
         }
 
         public bool CanConvertToString(IValueSerializerContext context)
         {
-            // we can always convert to a string 
+            // we can always convert to a string
             return true;
         }
 
@@ -122,6 +128,8 @@ namespace Microsoft.VisualBasic.Activities
             {
                 if (this.expressionTree == null)
                 {
+                    return this.invoker.GetExpressionTree();
+/*
                     string validationError;
 
                     // it's safe to create this CodeActivityMetadata here,
@@ -135,12 +143,13 @@ namespace Microsoft.VisualBasic.Activities
                         if (validationError != null)
                         {
                             throw FxTrace.Exception.AsError(new InvalidOperationException(SR.VBExpressionTamperedSinceLastCompiled(validationError)));
-                        }            
+                        }
                     }
                     finally
                     {
                         metadata.Dispose();
-                    }                    
+                    }
+*/
                 }
 
                 Fx.Assert(this.expressionTree.NodeType == ExpressionType.Lambda, "Lambda expression required");
@@ -153,7 +162,7 @@ namespace Microsoft.VisualBasic.Activities
         }
 
         private Expression<Func<ActivityContext, TResult>> CompileLocationExpression(CodeActivityPublicEnvironmentAccessor publicAccessor, out string validationError)
-        {            
+        {
             Expression<Func<ActivityContext, TResult>> expressionTreeToReturn = null;
             validationError = null;
             try

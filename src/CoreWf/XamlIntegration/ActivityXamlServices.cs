@@ -1,6 +1,8 @@
 // This file is part of Core WF which is licensed under the MIT license.
 // See LICENSE file in the project root for full license information.
 
+using System.Text;
+
 namespace System.Activities.XamlIntegration
 {
     using System;
@@ -58,7 +60,7 @@ namespace System.Activities.XamlIntegration
 
             return Load(fileName, new ActivityXamlServicesSettings());
         }
-        
+
         public static Activity Load(string fileName, ActivityXamlServicesSettings settings)
         {
             if (fileName == null)
@@ -121,7 +123,7 @@ namespace System.Activities.XamlIntegration
             {
                 throw FxTrace.Exception.ArgumentNull(nameof(xmlReader));
             }
-            
+
             if (settings == null)
             {
                 throw FxTrace.Exception.ArgumentNull(nameof(settings));
@@ -306,6 +308,47 @@ namespace System.Activities.XamlIntegration
                 ICompiledExpressionRoot compiledExpressionRoot = Activator.CreateInstance(compiledExpressionRootType, new object[] { dynamicActivity }) as ICompiledExpressionRoot;
                 CompiledExpressionInvoker.SetCompiledExpressionRootForImplementation(dynamicActivity, compiledExpressionRoot);
             }
+#else
+            string language = null;
+            if (RequiresCompilation(dynamicActivity, environment, out language))
+            {
+                TextExpressionCompiler compiler = new TextExpressionCompiler(GetCompilerSettings(dynamicActivity, language));
+                TextExpressionCompilerResults results = compiler.Compile();
+
+                if (results.HasErrors)
+                {
+                    StringBuilder messages = new StringBuilder();
+                    messages.Append("\r\n");
+                    messages.Append("\r\n");
+
+                    foreach (TextExpressionCompilerError message in results.CompilerMessages)
+                    {
+                        messages.Append("\t");
+                        if (results.HasSourceInfo)
+                        {
+                            messages.Append(string.Concat(" ", SR.ActivityXamlServiceLineString, " ", message.SourceLineNumber, ": "));
+                        }
+                        messages.Append(message.Message);
+
+                    }
+
+                    messages.Append("\r\n");
+                    messages.Append("\r\n");
+
+                    InvalidOperationException exception = new InvalidOperationException(SR.ActivityXamlServicesCompilationFailed(messages.ToString()));
+
+                    foreach (TextExpressionCompilerError message in results.CompilerMessages)
+                    {
+                        exception.Data.Add(message, message.Message);
+                    }
+                    throw FxTrace.Exception.AsError(exception);
+                }
+
+                Type compiledExpressionRootType = results.ResultType;
+
+                ICompiledExpressionRoot compiledExpressionRoot = Activator.CreateInstance(compiledExpressionRootType, new object[] { dynamicActivity }) as ICompiledExpressionRoot;
+                CompiledExpressionInvoker.SetCompiledExpressionRootForImplementation(dynamicActivity, compiledExpressionRoot);
+            }
 #endif
         }
 
@@ -353,12 +396,12 @@ namespace System.Activities.XamlIntegration
 
         private static TextExpressionCompilerSettings GetCompilerSettings(IDynamicActivity dynamicActivity, string language)
         {
-            int lastIndexOfDot = dynamicActivity.Name.LastIndexOf('.');
-            int lengthOfName = dynamicActivity.Name.Length;
+            var dynamicActivityName = dynamicActivity.Name ?? "DynamicActivity";
+            int lastIndexOfDot = dynamicActivityName.LastIndexOf('.');
 
-            string activityName = lastIndexOfDot > 0 ? dynamicActivity.Name.Substring(lastIndexOfDot + 1) : dynamicActivity.Name;
+            string activityName = lastIndexOfDot > 0 ? dynamicActivityName.Substring(lastIndexOfDot + 1) : dynamicActivityName;
             activityName += "_CompiledExpressionRoot";
-            string activityNamespace = lastIndexOfDot > 0 ? dynamicActivity.Name.Substring(0, lastIndexOfDot) : null;
+            string activityNamespace = lastIndexOfDot > 0 ? dynamicActivityName.Substring(0, lastIndexOfDot) : null;
 
             return new TextExpressionCompilerSettings()
             {
@@ -580,7 +623,7 @@ namespace System.Activities.XamlIntegration
                         Assembly.Load(serviceModelActivitiesDll);
                         serviceModelLoaded = true;
                         xamlType = base.GetXamlType(xamlNamespace, name, typeArguments);
-                    }                        
+                    }
                 }
                 return xamlType;
             }

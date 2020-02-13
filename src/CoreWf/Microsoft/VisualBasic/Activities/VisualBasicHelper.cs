@@ -354,7 +354,7 @@ namespace Microsoft.VisualBasic.Activities
                 {
                     try
                     {
-                        lambda = compiler.CompileExpression(this.textToCompile, scriptAndTypeScope.FindVariable, GetScriptOptions());
+                        lambda = compiler.CompileExpression(this.textToCompile, scriptAndTypeScope.FindVariable, this.referencedAssemblies, this.namespaceImports);
                     }
                     catch(CompilationErrorException ex)
                     {
@@ -399,11 +399,6 @@ namespace Microsoft.VisualBasic.Activities
 
             return Expression.Lambda(lambda.Type, finalBody, lambda.Parameters);
         }
-
-        ScriptOptions GetScriptOptions() =>
-            ScriptOptions.Default
-            .AddReferences(referencedAssemblies)
-            .AddImports(namespaceImports.Where(n=>!string.IsNullOrEmpty(n)));
 
         public Expression<Func<ActivityContext, T>> Compile<T>(CodeActivityPublicEnvironmentAccessor publicAccessor, bool isLocationReference = false)
         {
@@ -504,7 +499,7 @@ namespace Microsoft.VisualBasic.Activities
                 {
                     try
                     {
-                        lambda = compiler.CompileExpression(this.textToCompile, scriptAndTypeScope.FindVariable, GetScriptOptions(), lambdaReturnType);
+                        lambda = compiler.CompileExpression(this.textToCompile, scriptAndTypeScope.FindVariable, referencedAssemblies, namespaceImports, lambdaReturnType);
                     }
                     catch(CompilationErrorException ex)
                     {

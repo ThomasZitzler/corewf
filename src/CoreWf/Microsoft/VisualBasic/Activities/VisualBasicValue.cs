@@ -61,6 +61,7 @@ namespace Microsoft.VisualBasic.Activities
 
         protected override TResult Execute(CodeActivityContext context)
         {
+            /*
             if (!this.invoker.IsStaticallyCompiled)
             {
                 if (this.expressionTree != null)
@@ -77,6 +78,7 @@ namespace Microsoft.VisualBasic.Activities
                 }
             }
             else
+            */
             {
                 return (TResult)this.invoker.InvokeExpression(context);
             }
